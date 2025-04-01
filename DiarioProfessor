@@ -2,41 +2,31 @@ package diarioprofessor;
 
 import diarioprofessor.model.Diario;
 
-public class DiarioProfessor {
+import java.util.Scanner;
 
+public class DiarioProfessor {
     public static void main(String[] args) {
         Diario diariotin3 = new Diario();
-        
-        diariotin3.nomeAlunos[0] = "Rafael";
-        diariotin3.notasAlunos[0][0] = 7;
-        diariotin3.notasAlunos[0][1] = 5;
-        diariotin3.notasAlunos[0][2] = 6;
-        diariotin3.faltasAlunos[0] = 7;
-        
-        diariotin3.nomeAlunos[1] = "Wilson";
-        diariotin3.notasAlunos[1][0] = 6;
-        diariotin3.notasAlunos[1][1] = 7;
-        diariotin3.notasAlunos[1][2] = 5;
-        diariotin3.faltasAlunos[1] = 12;
-        
-        diariotin3.nomeAlunos[2] = "Daniel";
-        diariotin3.notasAlunos[2][0] = 7;
-        diariotin3.notasAlunos[2][1] = 8;
-        diariotin3.notasAlunos[2][2] = 6;
-        diariotin3.faltasAlunos[2] = 39;
-        
-        diariotin3.nomeAlunos[3] = "Miguel";
-        diariotin3.notasAlunos[3][0] = 3;
-        diariotin3.notasAlunos[3][1] = 3;
-        diariotin3.notasAlunos[3][2] = 6;
-        diariotin3.faltasAlunos[3] = 15;
-        
-        diariotin3.nomeAlunos[4] = "Pedro";
-        diariotin3.notasAlunos[4][0] = 10;
-        diariotin3.notasAlunos[4][1] = 9;
-        diariotin3.notasAlunos[4][2] = 8;
-        diariotin3.faltasAlunos[4] = 1;
-        
+        Scanner scan = new Scanner(System.in);
+
+        for(int i = 0; i < 5; i++){
+            System.out.println("Digite o Nome do Aluno:");
+            diariotin3.nomesAlunos[i] = scan.nextLine();
+            
+            System.out.println("Digite as 3 Notas do Aluno:");
+            for(int j = 0; j < 3; j++){
+                diariotin3.notasAlunos[i][j] = scan.nextDouble();
+            }
+            
+            System.out.println("Digite as Faltas do Aluno:");
+            diariotin3.faltasAlunos[i] = scan.nextInt();
+            
+            scan.nextLine();
+        }
+
         diariotin3.apresentarAlunos();
+
+        double mediaSala = diariotin3.calcularMediaSala();
+        System.out.println("Média geral da sala: " + mediaSala);
     }
 }
