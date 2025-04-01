@@ -1,0 +1,30 @@
+package diarioprofessor.model;
+
+public class Diario {
+    public String[] nomeAlunos = new String[5];
+    public int[] faltasAlunos = new int[5];
+    public double[][] notasAlunos = new double[5][3];
+
+    public void apresentarAlunos() {
+        for (int i = 0; i < nomeAlunos.length; i++) {
+            System.out.println("Nome: " + nomeAlunos[i]);
+            System.out.println("Faltas: " + faltasAlunos[i]);
+            System.out.print("Notas: ");
+            for (int a = 0; a < 3; a++) {
+                System.out.print(notasAlunos[i][a] + " ");
+            }
+
+            double media = calcularMedia(i);
+            System.out.println("\nMedia: " + media);
+            System.out.println();
+        }
+    }
+
+    public double calcularMedia(int aluno) {
+        double soma = 0;
+        for (int i = 0; i < 3; i++) {
+            soma += notasAlunos[aluno][i];
+        }
+        return soma / 3; 
+    }
+}
